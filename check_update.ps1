@@ -14,6 +14,7 @@
 	# Else return WARNING status
 	else {
 	echo "WARNING - $value Update required"
+	#test
 	$returnCode=1
 	}
 	 
