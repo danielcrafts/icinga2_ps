@@ -14,6 +14,7 @@
 	# Else return WARNING status
 	else {
 	echo "WARNING - Reboot required"
+	#test
 	$returnCode=1
 	}
 	 
