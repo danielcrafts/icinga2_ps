@@ -7,10 +7,10 @@
 	$returnCode=0
 	}
 	 
-	# Else return WARNING status
+	# Else return CRITICAL status
 	else {
-	echo "WARNING - $value Replication errors"
-	$returnCode=1
+	echo "CRITICAL - $value Replication errors"
+	$returnCode=2
 	}
 	 
 	exit ($returnCode)
