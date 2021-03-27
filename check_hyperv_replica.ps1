@@ -13,7 +13,7 @@
 	 
 	# Else return Critical status
 	else {
-	echo "CRITICAL - $value Replication Error's"
+	echo "CRITICAL - $value Replication errors"
 	$returnCode=1
 	}
 	 
