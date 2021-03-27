@@ -1,5 +1,5 @@
  	# Checks if hyperV replica is running
-	$value = (Get-VMReplication –ReplicationState Error | measure).count
+	$value = (Get-VMReplication -ReplicationState Error | measure).count
 	 
 	# If path does not exist, return OK status
 	if ($value -match "0") {
