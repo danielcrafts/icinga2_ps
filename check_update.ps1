@@ -1,8 +1,4 @@
-	# Checks if RebootRequired key exists, if so returns a warning.
-	# This key is deleted upon a successful reboot.
-	# This may indicate that Windows patching has taken place, without a reboot.
-		 
-	# Checks if RebootRequired reg path exists
+	# Checks if is available
 	$value = (Get-WindowsUpdate | measure).count
 	 
 	# If path does not exist, return OK status
