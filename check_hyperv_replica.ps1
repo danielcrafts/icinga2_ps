@@ -7,7 +7,7 @@
 	 
 	# If path does not exist, return OK status
 	if ($value -match "0") {
-	echo "OK - No Replication Error's"
+	echo "OK - No Replication errors"
 	$returnCode=0
 	}
 	 
