@@ -1,8 +1,4 @@
-	# Checks if RebootRequired key exists, if so returns a warning.
-	# This key is deleted upon a successful reboot.
-	# This may indicate that Windows patching has taken place, without a reboot.
-		 
-	# Checks if RebootRequired reg path exists
+ 	# Checks if hyperV replica is running
 	$value = (Get-VMReplication –ReplicationState Error | measure).count
 	 
 	# If path does not exist, return OK status
@@ -11,7 +7,7 @@
 	$returnCode=0
 	}
 	 
-	# Else return Critical status
+	# Else return CRITICAL status
 	else {
 	echo "CRITICAL - $value Replication errors"
 	$returnCode=1
