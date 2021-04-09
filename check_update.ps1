@@ -1,5 +1,5 @@
 	# Checks if is available
-	$value = (Get-WindowsUpdate | measure).count
+	$value = ((Get-WindowsUpdate).ComputerName | measure).count
 	 
 	# If path does not exist, return OK status
 	if ($value -match "0") {
