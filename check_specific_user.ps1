@@ -1,6 +1,3 @@
-$value = Get-WmiObject -Class Win32_ComputerSystem | Select-Object UserName
-$user = Get-Content .\specific_user.conf
-
 #Path Function
 function Get-ScriptDirectory {
     $Invocation = (Get-Variable MyInvocation -Scope 1).Value
@@ -10,6 +7,9 @@ function Get-ScriptDirectory {
 #Fixing Admin Path
 $runningpath = Get-ScriptDirectory
 cd $runningpath
+
+$value = Get-WmiObject -Class Win32_ComputerSystem | Select-Object UserName
+$user = Get-Content .\specific_user.conf
 
 	if ($value -match $user) {
 	echo "OK $value"
