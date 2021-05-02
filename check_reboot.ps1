@@ -1,5 +1,8 @@
-$sock = "C:\tmp\check_test.sock"
+$sock = "C:\tmp\check_reboot.sock"
 $reg = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired"
+$d = "7"
+$h = "0"
+$m = "0"
 
 	if ((test-path -path $reg) -match "False") {
 		if ((test-path "$sock") -match "True") {
@@ -13,7 +16,7 @@ $reg = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Updat
 	New-Item -Path "$sock" -Force
     }
 	
-$sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-7).AddHours(-0).AddMinutes(-0)
+$sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-"$d").AddHours(-"$h").AddMinutes(-"$m")
 
     if (((test-path -path $reg) -match "true") -and ($sockage -match "true")) {
     echo "Critical - Reboot required"
