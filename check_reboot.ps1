@@ -1,18 +1,26 @@
-	# Checks if RebootRequired key exists, if so returns a warning.
-	# This key is deleted upon a successful reboot.
-	# This may indicate that Windows patching has taken place, without a reboot.
-		 
-	# Checks if RebootRequired reg path exists
-	$value = test-path -path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired"
-	 
-	# If path does not exist, return OK status
-	if ($value -match "False") {
+$sock = "C:\tmp\check_test.sock"
+$reg = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired"
+
+	if ((test-path -path $reg) -match "False") {
+		if ((test-path "$sock") -match "True") {
+		Remove-Item $sock -Force
+		}
 	echo "OK - No Reboot required"
 	$returnCode=0
 	}
-	 
-	# Else return WARNING status
-	else {
+
+	if (((test-path "$sock") -match "False") -and ((test-path -path $reg) -match "true")) {
+	New-Item -Path "$sock" -Force
+    }
+	
+$sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-7).AddHours(-0).AddMinutes(-0)
+
+    if (((test-path -path $reg) -match "true") -and ($sockage -match "true")) {
+    echo "Critical - Reboot required"
+	$returnCode=1
+    }
+
+	if (((test-path -path $reg) -match "true") -and ($sockage -match "false")) {
 	echo "WARNING - Reboot required"
 	$returnCode=1
 	}
