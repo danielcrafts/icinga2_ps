@@ -13,7 +13,7 @@ $m = "0"
 	}
 
 	if (((test-path "$sock") -match "False") -and ((test-path -path $reg) -match "true")) {
-	New-Item -Path "$sock" -Force
+	New-Item -itemtype "file" -path "$sock" -Force
     }
 	
 $sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-"$d").AddHours(-"$h").AddMinutes(-"$m")
