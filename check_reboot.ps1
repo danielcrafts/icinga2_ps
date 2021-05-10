@@ -20,7 +20,7 @@ $sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-"$d").AddHours(-"$h").
 
     if (((test-path -path $reg) -match "true") -and ($sockage -match "true")) {
     echo "Critical - Reboot required"
-	$returnCode=1
+	$returnCode=2
     }
 
 	if (((test-path -path $reg) -match "true") -and ($sockage -match "false")) {
