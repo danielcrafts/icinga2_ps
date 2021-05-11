@@ -7,22 +7,22 @@ $temp = ""
 
 if ($disk.ReadErrorsTotal -gt "0"){
 $state = 1
-$read = ReadErrorsTotal
+$read = "ReadErrorsTotal"
 }
 
 if ($disk.WriteErrorsTotal -gt "0"){
 $state = 1
-$write = WriteErrorsTotal
+$write = "WriteErrorsTotal"
 }
 
 if ($disk.Wear -gt "0"){
 $state = 1
-$wear = Wear
+$wear = "Wear"
 }
 
 if (($disk.Temperature -gt "64") -and ($disk.Temperature -lt "240")){
 $state = 1
-$temp = Temperature
+$temp = "Temperature"
 }
 
 	if ($state -match "0") {
