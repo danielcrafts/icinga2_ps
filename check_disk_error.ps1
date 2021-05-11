@@ -7,17 +7,17 @@ $temp = ""
 
 if ($disk.ReadErrorsTotal -gt "0"){
 $state = 1
-$read = "ReadErrorsTotal"
+$read = "ReadError"
 }
 
 if ($disk.WriteErrorsTotal -gt "0"){
 $state = 1
-$write = "WriteErrorsTotal"
+$write = "WriteError"
 }
 
 if ($disk.Wear -gt "0"){
 $state = 1
-$wear = "Wear"
+$wear = "Disk condition (wear)"
 }
 
 if (($disk.Temperature -gt "64") -and ($disk.Temperature -lt "240")){
