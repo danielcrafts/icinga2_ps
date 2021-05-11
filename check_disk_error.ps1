@@ -32,7 +32,7 @@ $temp = "Temperature"
 
     if ($state -match "1") {
     echo "Critical - $read $write $wear $temp"
-	$returnCode=1
+	$returnCode=2
     }
 
 	exit ($returnCode)
