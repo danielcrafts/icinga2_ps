@@ -13,7 +13,7 @@ if ($disk.Wear -gt "0"){
 $state = 1
 }
 
-if ($disk.Temperature -gt "64"){
+if (($disk.Temperature -gt "64") -and ($disk.Temperature -lt "240")){
 $state = 1
 }
 
