@@ -7,7 +7,7 @@ $disk = (Get-PhysicalDisk).HealthStatus
 
     else {
     echo "Critical - Disk not Healthy"
-	$returnCode=1
+	$returnCode=2
     }
 
 	exit ($returnCode)

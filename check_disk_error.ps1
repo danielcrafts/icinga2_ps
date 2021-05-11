@@ -24,7 +24,7 @@ $state = 1
 
     if ($state -match "1") {
     echo "Critical - $disk"
-	$returnCode=1
+	$returnCode=2
     }
 
 	exit ($returnCode)
