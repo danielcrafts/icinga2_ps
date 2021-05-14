@@ -3,7 +3,7 @@
 param
 (
 $event = 5000
-$pattern = "successful"
+$pattern = "Failed"
 )
 $count = 0
 $Backups = Get-WinEvent -FilterHashTable @{ProviderName="Altaro VM Backup";LogName="Application";ID=$event;StartTime=(get-date).AddHours(-24)} 
