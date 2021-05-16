@@ -11,7 +11,10 @@
 	 
 	if ($value -lt "$crit") {
 	echo "OK - $value Update required|update=$value;$warn;$crit"
+	if ((test-path "$sock") -match "False"){
+	Remove-Item -Path "$sock" -Force
 	$returnCode=0
+	}
 	}
 	 
 	if (((test-path "$sock") -match "False") -and ($value -gt "$warn")) {
@@ -22,12 +25,12 @@
 
     if (($value -gt "$warn") -and ($sockage -match "true")) {
     echo "Critical - $value Update required|update=$value;$warn;$crit"
-	$returnCode=$warn
+	$returnCode=2
     }
 
 	if (($value -gt "$warn") -and ($sockage -match "false")) {
 	echo "WARNING - $value Update required|update=$value;$warn;$crit"
-	$returnCode=$warn
+	$returnCode=1
 	}
 	 
 	exit ($returnCode)
