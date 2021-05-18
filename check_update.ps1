@@ -7,8 +7,14 @@
 	$crit = "2"
 	)
 	$sock = "C:\tmp\check_update.sock"
+	$value = 666
 	$value = ((Get-WindowsUpdate).ComputerName | measure).count
-	 
+	
+	if ($value -match "666") {
+    echo "Critical - problem to execute Get-WindowsUpdate on machine"
+	$returnCode=2
+	}
+	
 	if ($value -lt "$crit") {
 	echo "OK - $value Update required|update=$value;$warn;$crit"
 	if ((test-path "$sock") -match "False"){
