@@ -7,7 +7,7 @@ $win = Get-CimInstance SoftwareLicensingProduct -Filter "Name like 'Windows%'" |
 
     else {
     echo "Critical - not activated"
-	$returnCode=1
+	$returnCode=2
     }
 
 	exit ($returnCode)
