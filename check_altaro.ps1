@@ -45,12 +45,12 @@ $sockcount = (ls C:\tmp\altaro\*.sock | measure).count
 $lockcount = (ls C:\tmp\altaro\*.lock | measure).count
 
 if ($lockcount -gt "0") {
-	Write-Host " Critical - 2 $pattern Backup for $lockcount Machines in last 48 hours"
+	Write-Host " Critical - twice $pattern Backup for $lockcount Machines in last 48 hours"
 	$returnCode=2
 	}
 
 if (($sockcount -gt "0") -and ($lockcount -match "0")) {
-	Write-Host " Warning - 1 $pattern Backup for $sockcount Machines in last 24 hours"
+	Write-Host " Warning - first $pattern Backup for $sockcount Machines in last 24 hours"
 	$returnCode=1
 	}
 
