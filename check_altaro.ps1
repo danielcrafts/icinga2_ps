@@ -27,7 +27,7 @@ foreach ($Backup in $Backups){
 	#Specific Vars and sock
 	$sock = "C:\tmp\altaro\$fail.sock"
 	$sock2 = "C:\tmp\altaro\$fail.lock"
-		if(test-path $sock -match "False" ) {
+		if((test-path $sock) -match "False" ) {
 		New-Item -itemtype "file" -path "$sock" -Force
 		}
 	$sockage = Test-Path $sock -OlderThan (Get-Date).AddDays(-"0").AddHours(-"25").AddMinutes(-"0")
