@@ -7,6 +7,7 @@ $pattern = "Failed"
 )
 $count = 0
 $Backups = Get-WinEvent -FilterHashTable @{ProviderName="Altaro VM Backup";LogName="Application";ID=$event;StartTime=(get-date).AddHours(-24)} 
+if((test-path "C:\tmp\altaro\") -match "False" ) {New-Item -itemtype "directory" -path "C:\tmp\altaro\" -Force}
 $socks = ls C:\tmp\altaro\
 
 #cleanup sock and lock here
@@ -48,8 +49,13 @@ if ($lockcount -gt "0") {
 	$returnCode=2
 	}
 
-if (($lockcount -gt "0") -and ($lockcount -gt "0")) {
+if (($sockcount -gt "0") -and ($lockcount -match "0")) {
 	Write-Host " Warning - 1 $pattern Backup for $sockcount Machines in last 24 hours"
+	$returnCode=1
+	}
+
+if (($sockcount -match "0") -and ($lockcount -match "0")) {
+	Write-Host " OK - no failed Backups"
 	$returnCode=1
 	}
 	
