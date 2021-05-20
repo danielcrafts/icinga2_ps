@@ -2,7 +2,7 @@
 #ID 5005 offsite backup
 param
 (
-$event = 5000
+$event = 5000,
 $pattern = "Failed"
 )
 $count = 0
