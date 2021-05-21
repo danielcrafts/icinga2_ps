@@ -23,8 +23,8 @@ foreach ($Backup in $Backups){
 	$server = $Backup.Message -split "`n" | Where-Object {$_ -match 'Name:'}
     $fail = $server.Split(':')[1]
 	$fail = $fail -replace '\s',''
-
-	#Specific Vars and sock
+    
+	if ($Backup.Message -match $pattern) {
 	$sock = "C:\tmp\altaro\$fail.sock"
 	$sock2 = "C:\tmp\altaro\$fail.lock"
 		if((test-path $sock) -match "False" ) {
@@ -36,7 +36,7 @@ foreach ($Backup in $Backups){
 		New-Item -itemtype "file" -path "$sock2" -Force
 		$count++
 		}
-
+	}
 	}
 
 #mesure sock for warning
