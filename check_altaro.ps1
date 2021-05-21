@@ -56,7 +56,7 @@ if (($sockcount -gt "0") -and ($lockcount -match "0")) {
 
 if (($sockcount -match "0") -and ($lockcount -match "0")) {
 	Write-Host " OK - no failed Backups"
-	$returnCode=1
+	$returnCode=0
 	}
 	
 	exit ($returnCode)
