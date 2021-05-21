@@ -6,7 +6,7 @@ $event = 5000,
 $pattern = "Failed"
 )
 $count = 0
-$Backups = Get-WinEvent -FilterHashTable @{ProviderName="Altaro VM Backup";LogName="Application";ID=$event;StartTime=(get-date).AddHours(-24)} 
+$Backups = Get-WinEvent -erroraction 'silentlycontinue' -FilterHashTable @{ProviderName="Altaro VM Backup";LogName="Application";ID=$event;StartTime=(get-date).AddHours(-24)}
 if((test-path "C:\tmp\altaro\") -match "False" ) {New-Item -itemtype "directory" -path "C:\tmp\altaro\" -Force}
 $socks = ls C:\tmp\altaro\
 
