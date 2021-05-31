@@ -17,7 +17,7 @@
 	
 	if ($value -lt "$crit") {
 	echo "OK - $value Update required|update=$value;$warn;$crit"
-	if ((test-path "$sock") -match "False"){
+	if ((test-path "$sock") -match "true"){
 	Remove-Item -Path "$sock" -Force
 	$returnCode=0
 	}
